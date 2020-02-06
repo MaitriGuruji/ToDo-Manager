@@ -34,10 +34,8 @@ function AddTask() {
     var time = today.getHours() + ":" + today.getMinutes() + ":" + today.getSeconds();
     var dateTime = date+' '+time;
 
-    console.log(t_id, title, priority, category, parent);               //console
     tasks[task_name] = [t_id, title, priority, category, parent, status, dateTime];
     localStorage.setItem('tasks', JSON.stringify(tasks)); 
-    console.log(localStorage);                                       //console
     document.form.reset();
     AddParentList();
     DisplayTask(tasks);
@@ -113,37 +111,28 @@ function SortPriority() {
     localStorage.removeItem('sorted');
     sorted = {};
     for (task in tasks) {
-        console.log(tasks[task][2]);                                     //console
         priority = tasks[task][2];
-        parent = tasks[task][4];
-        console.log(tasks[task][4]);  
+        parent = tasks[task][4]; 
         if (priority == 'high' && parent == null) {
             sorted[task] = tasks[task];
         }
     }
     for (task in tasks) {
-        console.log(tasks[task][2]);                                     //console
         priority = tasks[task][2];
-        parent = tasks[task][4];
-        console.log(tasks[task][4]);  
         if (priority == 'low' && parent == null) {
             sorted[task] = tasks[task];
         }
     }
     for (task in tasks) {
-        console.log(tasks[task][2]);                                     //console
         priority = tasks[task][2];
         parent = tasks[task][4];
-        console.log(tasks[task][4]);  
         if (priority == 'high' && parent != null) {
             sorted[task] = tasks[task];
         }
     }
     for (task in tasks) {
-        console.log(tasks[task][2]);                                     //console
         priority = tasks[task][2];
         parent = tasks[task][4];
-        console.log(tasks[task][4]);  
         if (priority == 'low' && parent != null) {
             sorted[task] = tasks[task];
         }
@@ -166,7 +155,6 @@ function FilterPriorityHigh() {
     localStorage.removeItem('filter');
     filter = {};
     for (task in tasks) {
-        console.log(tasks[task][2]);                                             //console
         priority = tasks[task][2];
         if (priority == 'high') {
             filter[task] = tasks[task];
@@ -179,7 +167,6 @@ function FilterPriorityLow() {
     localStorage.removeItem('filter');
     filter = {};
     for (task in tasks) {
-        console.log(tasks[task][2]);                                             //console
         priority = tasks[task][2];
         if (priority == 'low') {
             filter[task] = tasks[task];
@@ -199,7 +186,6 @@ function FilterStatusIncompleted() {
     localStorage.removeItem('StatusFilter');
     StatusFilter = {};
     for (task in tasks) {
-        console.log(tasks[task][5]);                                             //console
         status = tasks[task][5];
         if (status == 'incomplete') {
             StatusFilter[task] = tasks[task];
@@ -213,7 +199,6 @@ function FilterStatusCompleted() {
     localStorage.removeItem('StatusFilter');
     StatusFilter = {};
     for (task in tasks) {
-        console.log(tasks[task][2]);                                             //console
         status = tasks[task][5];
         if (status == 'complete') {
             StatusFilter[task] = tasks[task];
@@ -256,7 +241,6 @@ function AddParentList() {
         title = tasks[task][1]; 
         parent = tasks[task][4];
         if (parent == null) {
-            console.log('hey');                                            //console
             str = `<option id="${task}" value=${task}>${title}</option>`;
             $('#parent').append(str);
         }
@@ -268,7 +252,6 @@ DisplayTask(tasks);
 function DisplayTask(Task) {
     $('#tasks_display').empty();
     if (jQuery.isEmptyObject(Task) == false) {
-        console.log(Task)                                                      //console
         for (task in Task) {
             title = Task[task][1];
             priority = Task[task][2];
@@ -315,7 +298,6 @@ function DisplayTask(Task) {
 function DisplaySearch(Task) {
     $('#tasks_display').empty();
     if (jQuery.isEmptyObject(Task) == false) {
-        console.log(Task)                                                      //console
         for (task in Task) {
             title = Task[task][1];
             priority = Task[task][2];
