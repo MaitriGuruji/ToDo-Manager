@@ -1,0 +1,31 @@
+#display{
+    border-radius: 4px;
+    height: 575px;
+    min-width: 20%;
+    max-width: 80%;
+    padding: 15px;
+}
+
+.right{
+    text-align: right;
+}
+
+.left{
+    text-align: left;
+}
+
+.card-body {
+    padding: 0px;
+}
+
+.card {
+    padding: 7px;
+    min-width: 20%;
+    margin-bottom: 7px;
+}
+
+.cross {
+    padding: 0px;
+    margin: 0px;
+}
+
